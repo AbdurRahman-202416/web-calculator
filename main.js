@@ -11,9 +11,11 @@ function appendNumber(number) {
 }
 
 function setOperation(op) {
+  playSound() 
   if (currentInput === "") return;
 
   if (previousInput !== "") {
+    
     calculate();
   }
 
@@ -36,6 +38,7 @@ function clearDisplay() {
 }
 
 function calculate() {
+  playSound() 
   let result;
   const prev = parseFloat(previousInput);
   const current = parseFloat(currentInput);
