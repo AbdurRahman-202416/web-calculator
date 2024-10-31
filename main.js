@@ -1,9 +1,9 @@
 // script.js
-const dP = document.getElementById('display2');
+const dP = document.getElementById("display2");
 let currentInput = "";
 let operation = null;
 let previousInput = "";
-const sncdDisplay = document.getElementById('display');
+const sncdDisplay = document.getElementById("display");
 
 function appendNumber(number) {
   currentInput += number;
@@ -20,7 +20,7 @@ function setOperation(op) {
   operation = op;
   previousInput = currentInput;
   currentInput = "";
-  
+
   // Show the previous number and operation on the secondary display
   dP.value = previousInput + " " + operation;
 }
@@ -29,7 +29,7 @@ function clearDisplay() {
   currentInput = "";
   previousInput = "";
   operation = null;
-  dP.value=' '
+  dP.value = " ";
   updateDisplay();
 }
 
@@ -62,28 +62,45 @@ function calculate() {
   previousInput = "";
 
   // Display a result message
-  dP.value = "RESULT: "
+  dP.value = "RESULT: " + currentInput;
 
   updateDisplay();
 }
 
 function updateDisplay() {
   if (previousInput !== "" && operation !== null) {
-    document.getElementById("output").value =
-    previousInput + " " + operation + " " + currentInput;
-      dP.value=   previousInput + " " + operation + " " + currentInput;
+    document.getElementById("output").value = currentInput;
+
+    dP.value = previousInput + " " + operation + " " + currentInput;
+
+    // here we will display both
   } else {
     document.getElementById("output").value = currentInput;
   }
 }
 
 // Button scaling effect
-let btnStyle = document.querySelectorAll(".button");
-btnStyle.forEach((button) =>
-  button.addEventListener("click", () => {
-    button.style.transform = "scale(1.1)";
-    setTimeout(() => {
-      button.style.transform = "scale(1)";
-    }, 100);
-  })
-);
+// let btnStyle = document.querySelectorAll(".button");
+// btnStyle.forEach((button) =>
+//   button.addEventListener("click", () => {
+//     button.style.transform = "scale(1.1)";
+//     setTimeout(() => {
+//       button.style.transform = "scale(1)";
+//     }, 100);
+//   })
+// );
+
+document.addEventListener("keydown", (event) => {
+  const key = event.key;
+  console.log(key);
+
+  if (!isNaN(key)) {
+    appendNumber(key);
+  } else if (key === "+" || key === "-" || key === "*" || key === "/") {
+    setOperation(key);
+  } else if (key === "Enter" || key === "=") {
+    calculate();
+  } else if (key === "Escape" || key === "c") {
+    clearDisplay();
+  }
+});

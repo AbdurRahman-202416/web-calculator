@@ -58,7 +58,6 @@ body {
 }
 
 .screen {
-
   position: relative;
   overflow: hidden;
   font-family: "digital-7", sans-serif;
@@ -66,7 +65,7 @@ body {
   background-color: rgba(255, 61, 68, 0);
   width: 90%;
   height: 55px;
-  border-radius: 0px 5px 5px 0px ;
+  border-radius: 0px 5px 5px 0px;
   background-image: url(images/display.png);
   /* background-repeat: no-repeat; */
   background-position: center;
@@ -95,7 +94,10 @@ body {
   grid-template-columns: repeat(4, 1fr);
   gap: 13px 3px;
 }
-
+.button:active {
+  transform: translate(2px, 2px);
+  transition: 0.2s;
+}
 .button {
   font-family: "Arial MT";
   left: 12px;
@@ -143,19 +145,19 @@ body {
 /* Responsive adjustments */
 @media (max-width: 480px) {
   .calculator {
-    width: 93%; 
+    width: 93%;
     height: auto;
-    padding: 5px; 
+    padding: 5px;
   }
 
-  .screen{
+  .screen {
     font-size: 50px;
-    height: 40px; 
+    height: 40px;
     border: none;
   }
   .dualScreen {
     font-size: 20px;
-    height: 40px; 
+    height: 40px;
     border: none;
   }
   .title {
@@ -176,8 +178,8 @@ body {
 
   .button {
     height: 50px;
-    width: 70px; 
-    font-size: 30px; 
-    padding: 10px; 
+    width: 70px;
+    font-size: 30px;
+    padding: 10px;
   }
 }
