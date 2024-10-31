@@ -23,6 +23,8 @@ function setOperation(op) {
 
   // Show the previous number and operation on the secondary display
   dP.value = previousInput + " " + operation;
+
+  playSound();
 }
 
 function clearDisplay() {
@@ -77,23 +79,13 @@ function updateDisplay() {
   } else {
     document.getElementById("output").value = currentInput;
   }
+  playSound();
 }
-
-// Button scaling effect
-// let btnStyle = document.querySelectorAll(".button");
-// btnStyle.forEach((button) =>
-//   button.addEventListener("click", () => {
-//     button.style.transform = "scale(1.1)";
-//     setTimeout(() => {
-//       button.style.transform = "scale(1)";
-//     }, 100);
-//   })
-// );
 
 document.addEventListener("keydown", (event) => {
   const key = event.key;
   console.log(key);
-
+  playSound();
   if (!isNaN(key)) {
     appendNumber(key);
   } else if (key === "+" || key === "-" || key === "*" || key === "/") {
@@ -104,3 +96,18 @@ document.addEventListener("keydown", (event) => {
     clearDisplay();
   }
 });
+
+// const audio = new Audio("calculator-sound.mp3");
+// const buttons = document.querySelectorAll("button");
+
+// buttons.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     audio.play();
+
+//   });
+// });
+
+function playSound() {
+  const audio = new Audio("switch-button-106349.mp3");
+  audio.play();
+}
